@@ -22,6 +22,7 @@ import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.context.request.RequestContextHolder;
 import org.springframework.web.context.request.ServletRequestAttributes;
 
+import java.math.BigDecimal;
 import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
@@ -104,14 +105,14 @@ public class OperaterControl extends BaseControl<Operater> {
 			} else {
 				this.getLogger().info("新增用户: " + operater.getName());
 				operater.setPassword(MD5Util.getMD5String(operater.getPassword()));
-				operater.setSuperUser(0);
+				operater.setSuperUser(new Long(0));
 				Date date = new Date();
 				operater.setCreateTime(date);
 				operater.setUpdateTime(date);
-				operater.setOperaterId(this.getCurrentOperater().getId());
+				operater.setOperaterId(new BigDecimal(1));
 				operater.setOperaterCode(operater.getName());
                 operater.setCode(operater.getName());
-				operater.setStatus(1);
+				operater.setStatus(new Long(1));
 				this.getService().save(operater);
 			}
 			return MessageOut.ADD_OK_MESSAGE;
@@ -340,7 +341,7 @@ public class OperaterControl extends BaseControl<Operater> {
 				String[] tmp = ids.split(",");
 				for (int i = 0; i < tmp.length; i++) {
 					Operater dbOperater = (Operater) this.getService().getByKey(Long.parseLong(tmp[i]));
-					dbOperater.setStatus(0);
+					dbOperater.setStatus(new Long(0));
 					dbOperater.setOperaterId(this.getCurrentOperater().getId());
 					dbOperater.setOperaterCode(this.getCurrentOperater().getCode());
 					dbOperater.setUpdateTime(new Date());
@@ -372,7 +373,7 @@ public class OperaterControl extends BaseControl<Operater> {
 				String[] tmp = ids.split(",");
 				for (int i = 0; i < tmp.length; i++) {
 					Operater dbOperater = (Operater) this.getService().getByKey(Long.parseLong(tmp[i]));
-					dbOperater.setStatus(1);
+					dbOperater.setStatus(new Long(1));
 					dbOperater.setOperaterId(this.getCurrentOperater().getId());
 					dbOperater.setOperaterCode(this.getCurrentOperater().getCode());
 					dbOperater.setUpdateTime(new Date());

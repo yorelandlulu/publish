@@ -90,7 +90,7 @@ public class RoleControl extends BaseControl<Role> {
 				Date date = new Date();
 				role.setCreateTime(date);
 				role.setUpdateTime(date);
-				role.setOperaterId(this.getCurrentOperater().getId());
+				role.setOperaterId(new Long(this.getCurrentOperater().getId().intValue()));
 				role.setOperaterCode(this.getCurrentOperater().getCode());
 				role.setStatus(1);
 				this.getService().save(role);
@@ -127,7 +127,7 @@ public class RoleControl extends BaseControl<Role> {
 					dbRole.setName(role.getName());
 					dbRole.setUpdateTime(new Date());
 					dbRole.setRemark(role.getRemark());
-					dbRole.setOperaterId(this.getCurrentOperater().getId());
+					dbRole.setOperaterId(new Long(this.getCurrentOperater().getId().intValue()));
 					dbRole.setOperaterCode(this.getCurrentOperater().getCode());
 					this.getService().update(dbRole);
 				}

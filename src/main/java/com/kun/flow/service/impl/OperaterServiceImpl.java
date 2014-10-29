@@ -25,11 +25,17 @@ public class OperaterServiceImpl extends AbstractServiceImpl<Operater> implement
 
 	private OperaterBindRoleMapper operaterBindRoleMapper;
 
-	private OperaterMapper getOperaterMapper() {
-		return (OperaterMapper) this.getMapper();
-	}
+	private OperaterMapper operaterMapper;
 
-	public OperaterBindRoleMapper getOperaterBindRoleMapper() {
+    public OperaterMapper getOperaterMapper() {
+        return operaterMapper;
+    }
+
+    public void setOperaterMapper(OperaterMapper operaterMapper) {
+        this.operaterMapper = operaterMapper;
+    }
+
+    public OperaterBindRoleMapper getOperaterBindRoleMapper() {
 		return operaterBindRoleMapper;
 	}
 
@@ -42,7 +48,7 @@ public class OperaterServiceImpl extends AbstractServiceImpl<Operater> implement
 		try {
 			Operater temp = new Operater();
 			temp.setName(operater.getName());
-			temp.setStatus(1);
+			temp.setStatus(new Long(1));
 			temp = (Operater) findOneByExample(temp);
 			if (temp == null || !temp.getPassword().equals(MD5Util.getMD5String(operater.getPassword())))
 				return null;
@@ -54,12 +60,13 @@ public class OperaterServiceImpl extends AbstractServiceImpl<Operater> implement
 
 	@Override
 	public boolean isExist(Operater operater) throws ServiceException {
-		try {
-			Operater tmp = this.getOperaterMapper().getOneByNameOrCode(operater);
-			return (tmp != null) && !(tmp.getId().equals(operater.getId()));
-		} catch (Exception e) {
-			throw new ServiceException(e);
-		}
+//		try {
+//			Operater tmp = this.getOperaterMapper().
+//			return (tmp != null) && !(tmp.getId().equals(operater.getId()));
+//		} catch (Exception e) {
+//			throw new ServiceException(e);
+//		}
+        return false;
 	}
 
 	@Override

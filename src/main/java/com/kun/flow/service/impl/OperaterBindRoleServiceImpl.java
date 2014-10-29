@@ -7,6 +7,7 @@
 
 package com.kun.flow.service.impl;
 
+import java.math.BigDecimal;
 import java.util.Date;
 
 import com.kun.flow.data.OperaterBindRoleMapper;
@@ -42,7 +43,7 @@ public class OperaterBindRoleServiceImpl extends AbstractServiceImpl<OperaterBin
 			for (int i = 0; i < idsStr.length; i++) {
 				obr = new OperaterBindRole();
 				obr.setOperaterCode(operater.getOperaterCode());
-				obr.setOperaterId(operater.getId());
+				obr.setOperaterId(new Long(operater.getId().intValue()));
 				obr.setUserId(userId);
 				obr.setRoleId(Long.parseLong(idsStr[i]));
 				obr.setCreateTime(date);
