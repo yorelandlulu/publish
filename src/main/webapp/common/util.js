@@ -1,14 +1,15 @@
 /**
  * Created by Administrator on 2014/8/27.
  */
-(function($){
-    $.getUrlParam = function(name)
+var request =
+{
+    QueryString : function(val)
     {
-        var reg = new RegExp("(^|&)"+ name +"=([^&]*)(&|$)");
-        var r = window.location.search.substr(1).match(reg);
-        if (r!=null) return unescape(r[2]); return null;
+        var uri = window.location.search;
+        var re = new RegExp("" +val+ "=([^&?]*)", "ig");
+        return ((uri.match(re))?(uri.match(re)[0].substr(val.length+1)):null);
     }
-})(jQuery);
+}
 
 
 function toggleLeft(id){

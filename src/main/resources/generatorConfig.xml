@@ -39,7 +39,7 @@
 
 
 
-        <table schema="" tableName="Operater" domainObjectName="Operater"></table>
+        <table schema="" tableName="TESTDB" domainObjectName="TESTDB"></table>
 
     </context>
 </generatorConfiguration>

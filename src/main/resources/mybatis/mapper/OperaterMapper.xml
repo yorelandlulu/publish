@@ -452,6 +452,19 @@
         </set>
         where ID = #{id,jdbcType=DECIMAL}
     </update>
+
+    <!-- 修改 -->
+    <update id="update" parameterType="com.kun.flow.model.Operater">
+        <if test="object.id != null and object.name != null and object.name != ''">
+            update operater set password =
+            #{object.password},
+            name = #{object.name},
+            createTime = #{object.createtime},
+            UPDATETIME = #{object.updatetime},
+            status = #{object.status}
+            where id=#{object.id}
+        </if>
+    </update>
     <update id="updateByPrimaryKey" parameterType="com.kun.flow.model.Operater" >
         <!--
           WARNING - @mbggenerated

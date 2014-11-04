@@ -9,7 +9,20 @@
 			<ref bean="operaterServiceProxy" />
 		</property>
 	</bean>
+    <bean id="newsControl" class="com.kun.flow.web.control.NewsControl">
+        <property name="service">
+            <ref bean="newsServiceProxy" />
+        </property>
+    </bean>
 
+    <bean id="newsCategoryControl" class="com.kun.flow.web.control.NewsCategoryControl">
+        <property name="service">
+            <ref bean="newsCategoryServiceProxy" />
+        </property>
+        <property name="newsService">
+            <ref bean="newsServiceProxy" />
+        </property>
+    </bean>
 	<bean id="loginControl" class="com.kun.flow.web.control.LoginControl">
 		<property name="service">
 			<ref bean="operaterServiceProxy" />

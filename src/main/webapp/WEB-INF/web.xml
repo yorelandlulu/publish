@@ -6,6 +6,10 @@
 		<param-name>contextConfigLocation</param-name>
 		<param-value>/WEB-INF/classes/application*.xml</param-value>
 	</context-param>
+    <context-param>
+        <param-name>webAppRootKey</param-name>
+        <param-value>publish</param-value>
+    </context-param>
 	<context-param>
 		<param-name>javax.servlet.jsp.jstl.fmt.localizationContext</param-name>
 		<param-value>classpath:messages</param-value>
@@ -36,7 +40,7 @@
 		<filter-class>com.kun.flow.web.filter.SessionTimeoutCheckFilter</filter-class>
 		<init-param>
 			<param-name>vips</param-name>
-			<param-value>.html,.do,.css,.js</param-value>
+			<param-value>login.html,login_back.html,register.html,.do,.css,.js</param-value>
 		</init-param>
 	</filter>
 	<filter-mapping>

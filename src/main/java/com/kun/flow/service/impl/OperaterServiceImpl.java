@@ -48,6 +48,7 @@ public class OperaterServiceImpl extends AbstractServiceImpl<Operater> implement
 		try {
 			Operater temp = new Operater();
 			temp.setName(operater.getName());
+            temp.setType(operater.getType());
 			temp.setStatus(new Long(1));
 			temp = (Operater) findOneByExample(temp);
 			if (temp == null || !temp.getPassword().equals(MD5Util.getMD5String(operater.getPassword())))
