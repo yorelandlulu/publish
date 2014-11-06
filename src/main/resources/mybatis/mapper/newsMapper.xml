@@ -124,8 +124,11 @@
           <bind name="objName" value="'%'+key.getAuthor()+'%'" />
       where news.author like #{objName}
       </if>
-      <if test="key != null and key.getCategoryid() != null">
+      <if test="key != null and key.getCategoryid() != null and key.getCategoryid() != 0">
           where news.categoryid = #{key.categoryid}
+      </if>
+      <if test="key != null and key.getCategoryid() != null and key.getCategoryid() == 0">
+          where news.status > 3}
       </if>
 	  order by posttime desc
     </select>

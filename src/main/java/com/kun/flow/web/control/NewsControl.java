@@ -1,6 +1,7 @@
 package com.kun.flow.web.control;
 
 import com.kun.flow.bean.Pagination;
+import com.kun.flow.constants.Constants;
 import com.kun.flow.model.News;
 import com.kun.flow.service.INewsService;
 import com.kun.flow.web.response.DataOut;
@@ -42,6 +43,7 @@ public class NewsControl extends BaseControl<News> {
         try {
             news.setPosttime(new Date(news.getPosttime1()));
             news.setViewcount(new Long(0));
+            news.setStatus(Constants.NEWS_STATUS_NONAUDIT);
             this.getService().save(news);
             return MessageOut.ADD_OK_MESSAGE;
         } catch (Exception e) {
@@ -143,6 +145,9 @@ public class NewsControl extends BaseControl<News> {
             cur.setContent(news.getContent());
             cur.setEditname(news.getEditname());
             cur.setAuditname(news.getAuditname());
+            if(news.getCategoryid()>0){
+                cur.setStatus(Constants.NEWS_STATUS_ALREADY_AUDIT);
+            }
             this.getService().update(cur);
             return MessageOut.ADD_OK_MESSAGE;
         } catch (Exception e) {

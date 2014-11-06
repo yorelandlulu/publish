@@ -13,7 +13,7 @@ function loadFormData(){
         dataType : 'json',
         type : 'POST',
         success: function (d){
-            $("#editdiv").hide();
+            //$("#editdiv").hide();
             $("#idh").val(d.id);
             $("input[name='title']").val(d.title);
             $("input[name='subtitle']").val(d.subtitle);

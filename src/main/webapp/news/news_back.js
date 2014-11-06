@@ -21,7 +21,7 @@ function listnewsbycid(pageno){
         success: function (data){
             $("#fragment-1 ul").empty();
             for(var i in data.rows){
-                $("#fragment-1 ul").append("<li><a href='#'>"+data.rows[i].title.replace("<br/>","")+"</a><span>"+data.rows[i].posttime+"<a href='javascript:gotoview("+data.rows[i].id+")' class='edit'>查 看</a><a href='javascript:gotoedit("+data.rows[i].id+")' class='edit'>编 辑</a></span></li>");
+                $("#fragment-1 ul").append("<li><a href='#'>"+data.rows[i].title.replace("<br/>","")+"</a><span>"+data.rows[i].statusdis+"<a href='javascript:gotoview("+data.rows[i].id+")' class='edit'>查 看</a><a href='javascript:gotoedit("+data.rows[i].id+")' class='edit'>编 辑</a></span></li>");
             }
             $("#fragment-1 .pages span").empty();
 			if(pageno>1)

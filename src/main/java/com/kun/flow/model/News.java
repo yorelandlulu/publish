@@ -1,5 +1,6 @@
 package com.kun.flow.model;
 
+import com.kun.flow.constants.Constants;
 import com.kun.flow.util.JsonDateSerializer;
 import org.codehaus.jackson.map.annotate.JsonSerialize;
 import org.springframework.format.annotation.DateTimeFormat;
@@ -339,6 +340,18 @@ public class News {
      */
     public Integer getStatus() {
         return status;
+    }
+
+    public String getStatusdis(){
+        switch (status){
+            case 4:
+                return Constants.NEWS_STATUS_NONAUDIT_DISPLAY;
+            case 5:
+                return Constants.NEWS_STATUS_ALREADY_AUDIT_DISPLAY;
+            default:
+                return null;
+        }
+
     }
 
     /**
