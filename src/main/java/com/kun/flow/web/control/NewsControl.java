@@ -3,6 +3,7 @@ package com.kun.flow.web.control;
 import com.kun.flow.bean.Pagination;
 import com.kun.flow.constants.Constants;
 import com.kun.flow.model.News;
+import com.kun.flow.model.Operater;
 import com.kun.flow.service.INewsService;
 import com.kun.flow.web.response.DataOut;
 import com.kun.flow.web.response.MessageOut;
@@ -41,9 +42,11 @@ public class NewsControl extends BaseControl<News> {
     @ResponseBody
     public Out<Object> add(News news) {
         try {
+            Operater obj = this.getCurrentOperater();
             news.setPosttime(new Date(news.getPosttime1()));
             news.setViewcount(new Long(0));
             news.setStatus(Constants.NEWS_STATUS_NONAUDIT);
+            news.setOperaterid(obj.getId());
             this.getService().save(news);
             return MessageOut.ADD_OK_MESSAGE;
         } catch (Exception e) {

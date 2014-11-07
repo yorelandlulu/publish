@@ -33,7 +33,7 @@
         </sqlMapGenerator>
 
         <!-- generate Mapper -->
-        <javaClientGenerator type="XMLMAPPER" targetPackage="com.kun.flow.data"  targetProject="c:\mybatis-generated\java">
+        <javaClientGenerator type="XMLMAPPER" targetPackage="com.kun.flow.data"  targetProject="d:\mybatis-generated\java">
             <property name="enableSubPackages" value="true" />
         </javaClientGenerator>
 

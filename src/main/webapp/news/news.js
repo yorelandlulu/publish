@@ -1,5 +1,4 @@
 var url;
-var firstLevelCategory;
 var editor = CKEDITOR.replace("TextArea1");
 function checkAdmin(){
     $.ajax({
@@ -7,8 +6,7 @@ function checkAdmin(){
         dataType : 'json',
         type : 'POST',
         success: function (d) {
-            $("input[name='author']").val(d.name);
-            listnewsbycid(d.name, 1);
+            listnewsbycid(d.id, 1);
         }
     });
 }
@@ -17,7 +15,7 @@ function listnewsbycid(cid, pageno){
     $.ajax({
         url:'news/listbycategory.do',
         dataType : 'json',
-        data : {author: cid, page: pageno, rows: 10},
+        data : {id: cid, page: pageno, rows: 10},
         type : 'POST',
         success: function (data){
             $("#fragment-1 ul").empty();

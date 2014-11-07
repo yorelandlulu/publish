@@ -5,6 +5,7 @@ import com.kun.flow.util.JsonDateSerializer;
 import org.codehaus.jackson.map.annotate.JsonSerialize;
 import org.springframework.format.annotation.DateTimeFormat;
 
+import java.math.BigDecimal;
 import java.text.SimpleDateFormat;
 import java.util.Date;
 
@@ -25,6 +26,16 @@ public class News {
      */
     private Long id;
     private Long viewcount;
+
+    public BigDecimal getOperaterid() {
+        return operaterid;
+    }
+
+    public void setOperaterid(BigDecimal operaterid) {
+        this.operaterid = operaterid;
+    }
+
+    private BigDecimal operaterid;
 
     public Long getSort() {
         return sort;
