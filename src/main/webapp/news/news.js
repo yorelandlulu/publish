@@ -15,7 +15,7 @@ function listnewsbycid(cid, pageno){
     $.ajax({
         url:'news/listbycategory.do',
         dataType : 'json',
-        data : {id: cid, page: pageno, rows: 10},
+        data : {operaterid: cid, page: pageno, rows: 10},
         type : 'POST',
         success: function (data){
             $("#fragment-1 ul").empty();
