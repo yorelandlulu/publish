@@ -8,6 +8,7 @@
       This element was generated on Fri Aug 08 15:55:10 CST 2014.
     -->
     <id column="id" jdbcType="BIGINT" property="id" />
+    <id column="OPERATERID" property="operaterid" jdbcType="DECIMAL" />
     <result column="editname" jdbcType="VARCHAR" property="editname" />
     <result column="auditname" jdbcType="VARCHAR" property="auditname" />
     <result column="title" jdbcType="VARCHAR" property="title" />
@@ -122,13 +123,16 @@
     from news
       <if test="key != null and key.getAuthor() != null">
           <bind name="objName" value="'%'+key.getAuthor()+'%'" />
-      where news.author like #{objName}
+          where news.author like #{objName}
+      </if>
+      <if test="key != null and key.getOperaterid() != null and key.getOperaterid() != 0">
+          where news.operaterid = #{key.operaterid}
       </if>
       <if test="key != null and key.getCategoryid() != null and key.getCategoryid() != 0">
           where news.categoryid = #{key.categoryid}
       </if>
       <if test="key != null and key.getCategoryid() != null and key.getCategoryid() == 0">
-          where news.status > 3}
+          where news.status > 3
       </if>
 	  order by posttime desc
     </select>
@@ -178,11 +182,12 @@
     -->
     insert into news (editname, auditname,
       title, subtitle, content, author,
-      posttime, categoryid, status, sort, viewcount
+      posttime, categoryid, status, sort, viewcount, operaterid
       )
     values ( #{object.editname,jdbcType=VARCHAR}, #{object.auditname,jdbcType=VARCHAR},
       #{object.title,jdbcType=VARCHAR}, #{object.subtitle,jdbcType=VARCHAR}, #{object.content,jdbcType=VARCHAR}, #{object.author,jdbcType=VARCHAR},
-      #{object.posttime,jdbcType=TIMESTAMP}, #{object.categoryid,jdbcType=BIGINT}, #{object.status,jdbcType=INTEGER}, #{object.sort,jdbcType=BIGINT}, #{object.viewcount,jdbcType=BIGINT}
+      #{object.posttime,jdbcType=TIMESTAMP}, #{object.categoryid,jdbcType=BIGINT}, #{object.status,jdbcType=INTEGER}, #{object.sort,jdbcType=BIGINT},
+      #{object.viewcount,jdbcType=BIGINT}, #{object.operaterid,jdbcType=DECIMAL}
       )
   </insert>
   <insert id="insertSelective" parameterType="com.kun.flow.model.News">

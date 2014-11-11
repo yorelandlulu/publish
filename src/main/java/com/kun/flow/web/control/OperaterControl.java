@@ -283,6 +283,7 @@ public class OperaterControl extends BaseControl<Operater> {
 		operater.setName(this.getCurrentOperater().getName());
 		operater.setPhone(this.getCurrentOperater().getPhone());
         operater.setType(this.getCurrentOperater().getType());
+        operater.setId(this.getCurrentOperater().getId());
 		return operater;
 	}
 
