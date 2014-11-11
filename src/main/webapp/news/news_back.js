@@ -20,8 +20,9 @@ function listnewsbycid(pageno){
         type : 'POST',
         success: function (data){
             $("#fragment-1 ul").empty();
+	    $("#fragment-1 ul").append("<li style='text-align: left; background-color: #967a64; color: white;'>标题<span style='margin-left:400px;color:white;'>编辑人</span><span style='margin-left:80px;color:white;'>状态</span></li>");
             for(var i in data.rows){
-                $("#fragment-1 ul").append("<li><a href='#'>"+data.rows[i].title.replace("<br/>","")+"</a><span>"+data.rows[i].statusdis+"<a href='javascript:gotoview("+data.rows[i].id+")' class='edit'>查 看</a><a href='javascript:gotoedit("+data.rows[i].id+")' class='edit'>编 辑</a></span></li>");
+                $("#fragment-1 ul").append("<li><a href='#'>"+data.rows[i].title.replace("<br/>","")+"</a><span style='float: left; margin-left: -50px;'>"+data.rows[i].editname+"</span><span>"+data.rows[i].statusdis+"<a href='javascript:gotoview("+data.rows[i].id+")' class='edit'>查 看</a><a href='javascript:gotoedit("+data.rows[i].id+")' class='edit'>编 辑</a></span></li>");
             }
             $("#fragment-1 .pages span").empty();
 			if(pageno>1)
