@@ -11,6 +11,7 @@ import com.kun.flow.data.OperaterBindRoleMapper;
 import com.kun.flow.data.OperaterMapper;
 import com.kun.flow.exception.ServiceException;
 import com.kun.flow.model.Operater;
+import com.kun.flow.model.OperaterExample;
 import com.kun.flow.service.IOperaterService;
 import com.kun.flow.util.MD5Util;
 
@@ -61,13 +62,15 @@ public class OperaterServiceImpl extends AbstractServiceImpl<Operater> implement
 
 	@Override
 	public boolean isExist(Operater operater) throws ServiceException {
-//		try {
-//			Operater tmp = this.getOperaterMapper().
-//			return (tmp != null) && !(tmp.getId().equals(operater.getId()));
-//		} catch (Exception e) {
-//			throw new ServiceException(e);
-//		}
-        return false;
+		try {
+            OperaterExample example = new OperaterExample();
+            OperaterExample.Criteria c = example.createCriteria();
+            c.andNameEqualTo(operater.getName());
+            example.or(c);
+			return !((OperaterMapper)getMapper()).selectByExample(example).isEmpty();
+		} catch (Exception e) {
+            throw new ServiceException(e);
+        }
 	}
 
 	@Override

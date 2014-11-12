@@ -75,4 +75,5 @@ public interface NewsMapper extends IMapper<News> {
      * @throws Exception
      */
     public int getCountbyCid(@Param("key") News cid) throws Exception;
+    public int getAuditCount() throws Exception;
 }

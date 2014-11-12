@@ -26,15 +26,15 @@ function listnewsbycid(pageno){
             }
             $("#fragment-1 .pages span").empty();
 			if(pageno>1)
-				$(".btn_prev").attr("href","javascript:listnewsbycid("+cid+",'"+text+"',"+(pageno-1)+")");
+				$(".btn_prev").attr("href","javascript:listnewsbycid("+(pageno-1)+")");
 			if(pageno<(data.total/10-1))
-				$(".btn_next").attr("href","javascript:listnewsbycid("+cid+",'"+text+"',"+(pageno+1)+")");
+				$(".btn_next").attr("href","javascript:listnewsbycid("+(pageno+1)+")");
             for(var i=0; i <data.total/10; i++ ){
                 if(i==pageno-1){
-                    $("#fragment-1 .pages span").append("<a class='on' href=javascript:listnewsbycid("+cid+",'"+text+"',"+(i+1)+")>"+(i+1)+"</a>");
+                    $("#fragment-1 .pages span").append("<a class='on' href=javascript:listnewsbycid("+(i+1)+")>"+(i+1)+"</a>");
                 }
                 else{
-                    $("#fragment-1 .pages span").append("<a href=javascript:listnewsbycid("+cid+",'"+text+"',"+(i+1)+")>"+(i+1)+"</a>");
+                    $("#fragment-1 .pages span").append("<a href=javascript:listnewsbycid("+(i+1)+")>"+(i+1)+"</a>");
                 }
             }
         }

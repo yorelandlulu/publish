@@ -27,7 +27,7 @@ public class NewsServiceImpl extends AbstractServiceImpl<News> implements INewsS
             if (list == null || list.size() < page.getPageSize()) {
                 page.setTotalRows((page.getPageNumber() - 1) * page.getPageSize() + (list == null ? 0 : list.size()));
             } else {
-                page.setTotalRows(this.getNewsMapper().getCountbyCid(cid));
+                page.setTotalRows(this.getNewsMapper().getAuditCount());
             }
             return list;
         } catch (Exception e) {

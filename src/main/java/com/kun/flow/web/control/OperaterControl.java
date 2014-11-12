@@ -11,6 +11,7 @@ import com.kun.flow.bean.Pagination;
 import com.kun.flow.constants.Constants;
 import com.kun.flow.exception.ServiceException;
 import com.kun.flow.model.Operater;
+import com.kun.flow.model.OperaterExample;
 import com.kun.flow.service.IOperaterService;
 import com.kun.flow.util.MD5Util;
 import com.kun.flow.web.response.DataOut;

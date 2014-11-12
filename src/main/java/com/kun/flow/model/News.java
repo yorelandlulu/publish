@@ -177,7 +177,10 @@ public class News {
      * @mbggenerated Fri Aug 08 16:19:05 CST 2014
      */
     public String getEditname() {
-        return editname;
+        if(editname==null)
+            return "";
+        else
+            return editname;
     }
 
     /**
