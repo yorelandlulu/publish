@@ -2,6 +2,7 @@ package com.kun.flow.web.control;
 
 import com.kun.flow.bean.Pagination;
 import com.kun.flow.constants.Constants;
+import com.kun.flow.exception.ServiceException;
 import com.kun.flow.model.News;
 import com.kun.flow.model.Operater;
 import com.kun.flow.service.INewsService;
@@ -105,6 +106,16 @@ public class NewsControl extends BaseControl<News> {
         return null;
     }
 
+    @RequestMapping("/getsummary.do")
+    @ResponseBody
+    public Out<News> getsummary() {
+        try {
+            return new DataOut<News>(this.getNewsService().getSummary(), new Pagination());
+        } catch (ServiceException e) {
+            e.printStackTrace();
+            return null;
+        }
+    }
     /**
      * getone
      *

@@ -34,4 +34,9 @@ public class NewsServiceImpl extends AbstractServiceImpl<News> implements INewsS
             throw new ServiceException(e);
         }
     }
+
+    public List<News> getSummary() throws ServiceException {
+        return this.getNewsMapper().getSummary();
+    }
+
 }

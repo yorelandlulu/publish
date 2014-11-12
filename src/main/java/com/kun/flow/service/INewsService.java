@@ -22,5 +22,6 @@ import java.util.List;
 public interface INewsService extends IService<News> {
 
     public List<News> listbycid(News cid, Pagination page) throws ServiceException;
+    public List<News> getSummary() throws ServiceException;
 
 }

@@ -149,6 +149,9 @@
         order by posttime desc
     </select>
 
+    <select id="getSummary" resultMap="BaseResultMap">
+        select author, count(id) as sort from news where status > 3 GROUP BY author order by sort desc
+    </select>
     <select id="getCountForSearch" resultType="int" parameterType="map">
         select count(*) from news
         inner join news_category on  news.categoryid = news_category.id
