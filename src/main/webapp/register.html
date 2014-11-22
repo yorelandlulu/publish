@@ -53,6 +53,27 @@
                     电子邮箱:</label>
                 <input invalidMessage="邮箱格式不正确" class="easyui-validatebox" required="true" ischeck="true" name="email" type="text" id="email" validType="email" size="25" maxlength="25">
             </div>
+            <div class="item first_item ">
+                <label id="lblout">
+                    类型:</label>
+                <select class="easyui-combobox" onchange="javascript:toggledepart()">
+                    <option value="0">校外</option>
+                    <option value="1">校内</option>
+                </select>
+            </div>
+            <div class="item first_item " style="display: none;">
+                <label id="lbldepart">
+                    部门:</label>
+                <select class="easyui-combobox" name="depart">
+                    <option value=""></option>
+                    <option value="办公室">办公室</option>
+                    <option value="教务处">教务处</option>
+                    <option value="学员工作处">学员工作处</option>
+                    <option value="行政处">行政处</option>
+                    <option value="综合教研中心">综合教研中心</option>
+                    <option value="图文信息中心">图文信息中心</option>
+                </select>
+            </div>
             <div class="item set_overflow margin_top_fix ">
                 <a id="sign_in_btn_pop"
                    href="javascript:saveUser();" class="btn_sign_in" title="登录">
@@ -68,6 +89,9 @@
     </div>
 
     <script type="text/javascript">
+        function toggledepart(){
+
+        }
         function saveUser(){
             $('#login_form_pop').form('submit',{
                 url: 'operater/add.do',

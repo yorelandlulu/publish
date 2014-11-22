@@ -21,7 +21,7 @@ function listsummary(){
             $("#fragment-2 ul").empty();
             $("#fragment-2 ul").append("<li style='text-align: left; background-color: #967a64; color: white;'>投稿用户名<span style='margin-left:400px;color:white;'>投稿篇数</span></li>");
             for(var i in d){
-                $("#fragment-2 ul").append("<li style='padding-bottom: 18px'><a href='#'>"+d[i].username+"</a><span style='float: left; margin-left: -50px;'>"+d[i].count+"</span></li>");
+                $("#fragment-2 ul").append("<li style='padding-bottom: 18px'><a href='javascript:viewsummarybyuser("+d[i].userid+")'>"+d[i].username+"</a><span style='float: left; margin-left: -50px;'>"+d[i].count+"</span></li>");
             }
         }
     });

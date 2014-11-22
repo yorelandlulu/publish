@@ -42,7 +42,7 @@
                   and ${criterion.condition} #{criterion.value}
                 </when>
                 <when test="criterion.betweenValue">
-                  and ${criterion.condition} #{criterion.value} and #{criterion.secondValue}
+                  and ${criterion.condition} #{criterion.value} and #{csumriterion.secondValue}
                 </when>
                 <when test="criterion.listValue">
                   and ${criterion.condition}
@@ -152,7 +152,7 @@
     </select>
 
     <select id="getSummary" resultMap="BaseResultMap">
-        select author, count(id) as sort from news where status > 3 GROUP BY author order by sort desc
+        select max(operaterid) as operaterid, author, count(id) as sort from news where status > 3 GROUP BY author order by sort desc
     </select>
     <select id="getCountForSearch" resultType="int" parameterType="map">
         select count(*) from news

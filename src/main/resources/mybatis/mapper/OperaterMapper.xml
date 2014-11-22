@@ -19,6 +19,7 @@
         <result column="UPDATETIME" property="updatetime" jdbcType="TIMESTAMP" />
         <result column="OPERATERID" property="operaterid" jdbcType="DECIMAL" />
         <result column="OPERATERCODE" property="operatercode" jdbcType="VARCHAR" />
+        <result column="DEPART" property="depart" jdbcType="VARCHAR" />
         <result column="STATUS" property="status" jdbcType="DECIMAL" />
     </resultMap>
     <sql id="Example_Where_Clause" >
@@ -151,7 +152,7 @@
           This element was generated on Wed Oct 29 22:00:16 CST 2014.
         -->
         ID, TYPE, CODE, NAME, PASSWORD, SUPERUSER, EMAIL, PHONE, CREATETIME, UPDATETIME,
-        OPERATERID, OPERATERCODE, STATUS
+        OPERATERID, OPERATERCODE, STATUS, DEPART
     </sql>
 
     <select id="findOneByExample" resultMap="OperaterResultMap" parameterType="com.kun.flow.model.Operater">
@@ -221,12 +222,12 @@
         NAME, PASSWORD, SUPERUSER,
         EMAIL, PHONE, CREATETIME,
         UPDATETIME, OPERATERID, OPERATERCODE,
-        STATUS)
+        STATUS, DEPART)
         values (#{object.id,jdbcType=DECIMAL}, #{object.type,jdbcType=DECIMAL}, #{object.code,jdbcType=VARCHAR},
         #{object.name,jdbcType=VARCHAR}, #{object.password,jdbcType=VARCHAR}, #{object.superuser,jdbcType=DECIMAL},
         #{object.email,jdbcType=VARCHAR}, #{object.phone,jdbcType=VARCHAR}, #{object.createtime,jdbcType=TIMESTAMP},
         #{object.updatetime,jdbcType=TIMESTAMP}, #{object.operaterid,jdbcType=DECIMAL}, #{object.operatercode,jdbcType=VARCHAR},
-        #{object.status,jdbcType=DECIMAL})
+        #{object.status,jdbcType=DECIMAL}, #{object.depart,jdbcType=VARCHAR})
     </insert>
     <insert id="insertSelective" parameterType="com.kun.flow.model.Operater" >
         <!--
@@ -483,6 +484,7 @@
         UPDATETIME = #{updatetime,jdbcType=TIMESTAMP},
         OPERATERID = #{operaterid,jdbcType=DECIMAL},
         OPERATERCODE = #{operatercode,jdbcType=VARCHAR},
+        DEPART = #{depart,jdbcType=VARCHAR},
         STATUS = #{status,jdbcType=DECIMAL}
         where ID = #{id,jdbcType=DECIMAL}
     </update>

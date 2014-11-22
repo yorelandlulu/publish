@@ -118,6 +118,7 @@ public class NewsControl extends BaseControl<News> {
                 Summary sum = new Summary();
                 sum.setUsername(news.getAuthor());
                 sum.setCount(""+news.getSort());
+                sum.setUserid(news.getOperaterid());
                 result.add(sum);
             }
             return result;
