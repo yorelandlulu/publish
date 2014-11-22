@@ -27,6 +27,15 @@ public class News {
     private Long id;
     private Long viewcount;
     private Long adminaudit;
+    private Long tempaudit;
+
+    public Long getTempaudit() {
+        return tempaudit;
+    }
+
+    public void setTempaudit(Long tempaudit) {
+        this.tempaudit = tempaudit;
+    }
 
     public Long getAdminaudit() {
         return adminaudit;
@@ -371,6 +380,10 @@ public class News {
                 return Constants.NEWS_STATUS_NONAUDIT_DISPLAY;
             case 5:
                 return Constants.NEWS_STATUS_ALREADY_AUDIT_DISPLAY;
+            case 6:
+                return Constants.NEWS_STATUS_EDITED_DISPLAY;
+            case 7:
+                return Constants.NEWS_STATUS_FAILED_AUDIT_DISPLAY;
             default:
                 return null;
         }

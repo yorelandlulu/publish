@@ -1,7 +1,16 @@
 var editnewsid = request.QueryString('editnewsid');
-//var editnewsid =14;
+var iseditor = true;
 window.onload = function()
 {
+    $.ajax({
+        url:'operater/getMyInfo.do',
+        dataType : 'json',
+        type : 'POST',
+        async: false,
+        success: function (d) {
+            if(d.type==0) iseditor = false;
+        }
+    });
     loadFormData();
     CKEDITOR.replace("content");
 };
@@ -36,6 +45,9 @@ function loadFormData(){
 
         }
     });
+    if(iseditor){
+        $("#categorydiv, #auditdiv, #auditordiv").hide();
+    }
 }
 function init(){
     $.ajax({

@@ -67,7 +67,7 @@
                                         副标题:</label>
                                     <input name="subtitle" type="text" id="subtitle" size="60" maxlength="60" ischeck="false">
                                 </div>
-                                <div class="item first_item clear-block">
+                                <div id="categorydiv" class="item first_item clear-block">
                                     <label>
                                         类别:</label>
                                     <input id="cc1" class="easyui-combobox" class="easyui-combobox" name="categoryid1"
@@ -109,7 +109,7 @@
                                         编辑人:</label>
                                     <input name="editname" type="text" id="editname" size="60" maxlength="60" ischeck="false">
                                 </div>
-                                <div class="item first_item clear-block">
+                                <div id="auditordiv" class="item first_item clear-block">
                                     <label>
                                         审核人:</label>
                                     <input name="auditname" type="text" id="auditname" size="60" maxlength="60" ischeck="false">
@@ -118,6 +118,14 @@
                                     <label>
                                         发布时间:</label>
                                     <input id="dd" type="text" name="posttime1" style="width:200px">
+                                </div>
+                                <div id="auditdiv" class="item first_item clear-block">
+                                    <label id="lblout">
+                                        审核结果:</label>
+                                    <select id="isaudit" name="tempaudit" style="height: 26px;border: 1px solid #666;" >
+                                        <option value="0">审核未通过</option>
+                                        <option value="1">审核通过</option>
+                                    </select>
                                 </div>
                                 <div class="item clear-block">
                                     <textarea id="TextArea2" cols="20" rows="2" name="content"></textarea>

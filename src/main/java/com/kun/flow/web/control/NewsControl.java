@@ -172,8 +172,15 @@ public class NewsControl extends BaseControl<News> {
             cur.setContent(news.getContent());
             cur.setEditname(news.getEditname());
             cur.setAuditname(news.getAuditname());
-            if(news.getCategoryid()!=null&&news.getCategoryid()>0){
-                cur.setStatus(Constants.NEWS_STATUS_ALREADY_AUDIT);
+            Operater obj = this.getCurrentOperater();
+            if(obj.getType()!=null&&obj.getType()==1){
+                cur.setStatus(Constants.NEWS_STATUS_EDITED);
+            }
+            else if(news.getCategoryid()!=null&&news.getCategoryid()>0&&obj.getType()!=null&&obj.getType()==0){
+                if(news.getTempaudit()==0)
+                    cur.setStatus(Constants.NEWS_STATUS_FAILED_AUDIT);
+                else if(news.getTempaudit()==1)
+                    cur.setStatus(Constants.NEWS_STATUS_ALREADY_AUDIT);
             }
             this.getService().update(cur);
             return MessageOut.ADD_OK_MESSAGE;

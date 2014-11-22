@@ -38,6 +38,8 @@ public class Summary {
     private String depart;
 
     public String getDepart() {
+        if(depart == null)
+            return "";
         return depart;
     }
 

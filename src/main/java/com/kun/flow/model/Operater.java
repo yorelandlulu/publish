@@ -102,8 +102,6 @@ public class Operater {
     private String depart;
 
     public String getDepart() {
-        if(depart == null)
-            return "";
         return depart;
     }
 
