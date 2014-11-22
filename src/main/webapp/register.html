@@ -23,7 +23,7 @@
 
 
     </div>
-    <div class="login_box">
+    <div class="login_box" style="height: 400px">
         <form  id="login_form_pop" method="post" action="">
             <div class="item first_item ">
                 <label id="lblaccount_popup">
@@ -56,15 +56,15 @@
             <div class="item first_item ">
                 <label id="lblout">
                     类型:</label>
-                <select class="easyui-combobox" onchange="javascript:toggledepart()">
+                <select id="isout" style="height: 26px;border: 1px solid #666;" onchange="javascript:toggledepart()">
                     <option value="0">校外</option>
                     <option value="1">校内</option>
                 </select>
             </div>
-            <div class="item first_item " style="display: none;">
+            <div id="departdiv" class="item first_item " style="display: none;">
                 <label id="lbldepart">
                     部门:</label>
-                <select class="easyui-combobox" name="depart">
+                <select name="depart" style="height: 26px;border: 1px solid #666;">
                     <option value=""></option>
                     <option value="办公室">办公室</option>
                     <option value="教务处">教务处</option>
@@ -89,8 +89,12 @@
     </div>
 
     <script type="text/javascript">
+        //$("select").combobox({    listHeight:'50px'});
         function toggledepart(){
-
+            if($("#isout").val()==1)
+                $("#departdiv").show();
+            else
+                $("#departdiv").hide();
         }
         function saveUser(){
             $('#login_form_pop').form('submit',{

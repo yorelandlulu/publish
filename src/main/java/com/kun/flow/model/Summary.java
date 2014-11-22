@@ -34,4 +34,14 @@ public class Summary {
     public void setUserid(BigDecimal userid) {
         this.userid = userid;
     }
+
+    private String depart;
+
+    public String getDepart() {
+        return depart;
+    }
+
+    public void setDepart(String depart) {
+        this.depart = depart;
+    }
 }
