@@ -16,6 +16,14 @@ $.extend($.fn.validatebox.defaults.rules, {
 				},
 				message : '只能包含数字、字母'
 			},
+            //移动手机号码验证
+            mobile: {//value值为文本框中的值
+                validator: function (value) {
+                    var reg = /^1[3|4|5|8|9]\d{9}$/;
+                    return reg.test(value);
+                },
+                message: '输入手机号码格式不准确.'
+            },
 			equals : {
 				validator : function(value, param) {
 					return value == $(param[0]).val();

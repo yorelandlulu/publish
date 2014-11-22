@@ -23,6 +23,7 @@ function loadFormData(){
                 required: true,
                 showSeconds: false
             });
+            $("#radio"+d.adminaudit).attr("checked",'checked');
             $("input[name='author']").val(d.author);
             $("input[name='editname']").val(d.editname);
             $("input[name='auditname']").val(d.auditname);

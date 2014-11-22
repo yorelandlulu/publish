@@ -100,6 +100,12 @@
                             <form id="fm" method="post" novalidate>
                                 <span id="sign_in_tips_pop" class="warnImgWrap visible_none sign_tip"></span>
                                 <div class="item first_item clear-block">
+                                    <label >
+                                        <red style="color: red">*</red>部门领导人是否审核</label>
+                                    <input type="radio" name="adminaudit" value="1" />是
+                                    <input type="radio" name="adminaudit" value="0" />否
+                                </div>
+                                <div class="item first_item clear-block">
                                     <label id="lblaccount_popup" >
                                         标题:</label>
                                     <input class="easyui-validatebox" required="true" name="title" type="text" id="title" size="60" maxlength="60" ischeck="true" >
@@ -110,11 +116,6 @@
                                     <input name="subtitle" type="text" id="subtitle" size="60" maxlength="60" ischeck="false">
                                 </div>
                                 <input type="hidden" name="categoryid" value="0" />
-                                <div id="editdiv" class="item first_item clear-block">
-                                    <label>
-                                        编辑人:</label>
-                                    <input name="editname" type="text" id="editname" size="60" maxlength="60" ischeck="false">
-                                </div>
                                 <div class="item first_item clear-block">
                                     <label>
                                         作者:</label>

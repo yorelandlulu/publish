@@ -51,6 +51,12 @@
                             <form id="fm" method="post" novalidate="" action="news/add.do">
                                 <span id="sign_in_tips_pop" class="warnImgWrap visible_none sign_tip"></span>
                                 <div class="item first_item clear-block">
+                                    <label >
+                                        <red style="color: red">*</red>部门领导人是否审核</label>
+                                    <input id="radio1" type="radio" name="adminaudit" value="1" />是
+                                    <input id="radio0" type="radio" name="adminaudit" value="0" />否
+                                </div>
+                                <div class="item first_item clear-block">
                                     <label id="lblaccount_popup">
                                         标题:</label>
                                     <input class="easyui-validatebox validatebox-text" required="true" name="title" type="text" id="title" size="60" maxlength="60" ischeck="true">

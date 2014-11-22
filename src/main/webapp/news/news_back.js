@@ -8,10 +8,24 @@ function checkAdmin(){
         type : 'POST',
         success: function (d) {
             listnewsbycid(1);
+            listsummary();
         }
     });
 }
-
+function listsummary(){
+    $.ajax({
+        url:'news/getsummary.do',
+        dataType : 'json',
+        type : 'GET',
+        success: function (d) {
+            $("#fragment-2 ul").empty();
+            $("#fragment-2 ul").append("<li style='text-align: left; background-color: #967a64; color: white;'>投稿用户名<span style='margin-left:400px;color:white;'>投稿篇数</span></li>");
+            for(var i in d){
+                $("#fragment-2 ul").append("<li style='padding-bottom: 18px'><a href='#'>"+d[i].username+"</a><span style='float: left; margin-left: -50px;'>"+d[i].count+"</span></li>");
+            }
+        }
+    });
+}
 function listnewsbycid(pageno){
     $.ajax({
         url:'news/listbycategory.do',

@@ -26,6 +26,15 @@ public class News {
      */
     private Long id;
     private Long viewcount;
+    private Long adminaudit;
+
+    public Long getAdminaudit() {
+        return adminaudit;
+    }
+
+    public void setAdminaudit(Long adminaudit) {
+        this.adminaudit = adminaudit;
+    }
 
     public BigDecimal getOperaterid() {
         return operaterid;

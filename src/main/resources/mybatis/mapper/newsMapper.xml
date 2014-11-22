@@ -20,6 +20,8 @@
     <result column="status" jdbcType="INTEGER" property="status" />
     <result column="viewcount" jdbcType="BIGINT" property="viewcount" />
     <result column="sort" jdbcType="BIGINT" property="sort" />
+    <result column="ADMINAUDIT" jdbcType="BIGINT" property="adminaudit" />
+
   </resultMap>
   <sql id="Example_Where_Clause">
     <!--
@@ -90,10 +92,10 @@
     </where>
   </sql>
   <sql id="Base_Column_List">
-    news.id as id, editname, auditname, title, subtitle, content, author, posttime, categoryid, news.status as status, viewcount
+    news.id as id, editname, auditname, title, subtitle, content, author, posttime, categoryid, news.status as status, viewcount, adminaudit
   </sql>
     <sql id="Column_List_Listview">
-        news.id as id, editname, auditname, title, subtitle, author, posttime, categoryid, news.status as status
+        news.id as id, editname, auditname, title, subtitle, author, posttime, categoryid, news.status as status, adminaudit
     </sql>
   <select id="selectByPrimaryKey" parameterType="java.lang.Long" resultMap="BaseResultMap">
     <!--
@@ -188,12 +190,12 @@
     -->
     insert into news (editname, auditname,
       title, subtitle, content, author,
-      posttime, categoryid, status, sort, viewcount, operaterid
+      posttime, categoryid, status, sort, viewcount, operaterid, adminaudit
       )
     values ( #{object.editname,jdbcType=VARCHAR}, #{object.auditname,jdbcType=VARCHAR},
       #{object.title,jdbcType=VARCHAR}, #{object.subtitle,jdbcType=VARCHAR}, #{object.content,jdbcType=VARCHAR}, #{object.author,jdbcType=VARCHAR},
       #{object.posttime,jdbcType=TIMESTAMP}, #{object.categoryid,jdbcType=BIGINT}, #{object.status,jdbcType=INTEGER}, #{object.sort,jdbcType=BIGINT},
-      #{object.viewcount,jdbcType=BIGINT}, #{object.operaterid,jdbcType=DECIMAL}
+      #{object.viewcount,jdbcType=BIGINT}, #{object.operaterid,jdbcType=DECIMAL}, #{object.adminaudit,jdbcType=DECIMAL}
       )
   </insert>
   <insert id="insertSelective" parameterType="com.kun.flow.model.News">
@@ -394,6 +396,7 @@
             posttime = #{object.posttime,jdbcType=TIMESTAMP},
             categoryid = #{object.categoryid,jdbcType=BIGINT},
             viewcount = #{object.viewcount,jdbcType=BIGINT},
+            adminaudit = #{object.adminaudit,jdbcType=BIGINT},
             status = #{object.status,jdbcType=INTEGER},
             sort = #{object.sort,jdbcType=BIGINT}
             where id = #{object.id,jdbcType=BIGINT}

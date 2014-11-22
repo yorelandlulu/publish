@@ -5,6 +5,7 @@ import com.kun.flow.constants.Constants;
 import com.kun.flow.exception.ServiceException;
 import com.kun.flow.model.News;
 import com.kun.flow.model.Operater;
+import com.kun.flow.model.Summary;
 import com.kun.flow.service.INewsService;
 import com.kun.flow.web.response.DataOut;
 import com.kun.flow.web.response.MessageOut;
@@ -13,6 +14,7 @@ import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.ResponseBody;
 
+import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
 
@@ -108,9 +110,17 @@ public class NewsControl extends BaseControl<News> {
 
     @RequestMapping("/getsummary.do")
     @ResponseBody
-    public Out<News> getsummary() {
+    public List<Summary> getsummary() {
         try {
-            return new DataOut<News>(this.getNewsService().getSummary(), new Pagination());
+            List<News> list = this.getNewsService().getSummary();
+            List<Summary> result = new ArrayList<Summary>();
+            for(News news : list){
+                Summary sum = new Summary();
+                sum.setUsername(news.getAuthor());
+                sum.setCount(""+news.getSort());
+                result.add(sum);
+            }
+            return result;
         } catch (ServiceException e) {
             e.printStackTrace();
             return null;
@@ -153,13 +163,14 @@ public class NewsControl extends BaseControl<News> {
             cur.setTitle(news.getTitle());
             cur.setSubtitle(news.getSubtitle());
             cur.setSort(news.getSort());
+            cur.setAdminaudit(news.getAdminaudit());
             cur.setAuthor(news.getAuthor());
             cur.setPosttime(new Date(news.getPosttime1()));
             cur.setCategoryid(news.getCategoryid());
             cur.setContent(news.getContent());
             cur.setEditname(news.getEditname());
             cur.setAuditname(news.getAuditname());
-            if(news.getCategoryid()>0){
+            if(news.getCategoryid()!=null&&news.getCategoryid()>0){
                 cur.setStatus(Constants.NEWS_STATUS_ALREADY_AUDIT);
             }
             this.getService().update(cur);
