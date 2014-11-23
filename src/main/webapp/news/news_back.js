@@ -126,6 +126,10 @@ function gotoview(id){
 function gotoedit(id){
 	window.open ('edit_back.html?editnewsid='+id,'newwindow','height=700,width=900,top=0,left=0,toolbar=no,menubar=no,scrollbars=yes, resizable=no,location=no, status=no');
 }
+
+function viewsummarybyuser(id){
+    window.open ('user_detail.html?userdetailid='+id,'newwindow','height=700,width=850,top=0,left=0,toolbar=no,menubar=no,scrollbars=yes, resizable=no,location=no, status=no');
+}
 function logout(){
         $.ajax({
             url:'login/logout.do',

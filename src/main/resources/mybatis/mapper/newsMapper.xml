@@ -152,7 +152,7 @@
     </select>
 
     <select id="getSummary" resultMap="BaseResultMap">
-        select max(OPERATER.DEPART) as subtitle, max(NEWS.operaterid) as operaterid, author, count(NEWS.id) as sort from news inner join OPERATER on NEWS.OPERATERID = OPERATER.ID where NEWS.status > 3 GROUP BY author order by sort desc
+        select max(OPERATER.DEPART) as subtitle, NEWS.operaterid as operaterid, max(OPERATER.name) author, count(NEWS.id) as sort from news inner join OPERATER on NEWS.OPERATERID = OPERATER.ID where NEWS.status > 3 GROUP BY NEWS.operaterid order by sort desc
     </select>
     <select id="getCountForSearch" resultType="int" parameterType="map">
         select count(*) from news
